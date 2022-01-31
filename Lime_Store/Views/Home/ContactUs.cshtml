@@ -1,0 +1,236 @@
+﻿@model Lime_Store.Models.Send
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru_RU">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lime_Time | Поддержка</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/mainMeow.css" rel="stylesheet" />
+    <link href="~/css/responsive.css" rel="stylesheet" />
+</head><!--/head-->
+
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href=""><i class="fa fa-phone"></i> +7 (228)-322-10-30</a></li>
+                                <li><a href=""><i class="fa fa-envelope"></i> Isip_d.v.seryak@mpt.ru</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <div class="btn-group pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                    Россия
+                                    <span class="caret"></span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                    Валюта
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">Рубли</a></li>
+                                    <li><a href="">Доллары</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="@Url.Action("Cart")"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="@Url.Action("Index")">Домашняя страница</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="active">Магазин<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="@Url.Action("Shop")" class="active">Товары</a></li>
+                                        <li><a href="@Url.Action("Cart")"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="@Url.Action("ContactUs")">Поддержка</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            <input type="text" placeholder="Поиск" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="title text-center">Связь с нами</h2>
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A32c5b70aee9ecc131291d91264d7364767f72a16bcff695980f11446feb36ca5&amp;width=1150&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="contact-form">
+                    <h2 class="title text-center">Ваше обращение</h2>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form row" name="contact-form" asp-antiforgery="true" asp-action="SendMail" asp-controller="Home" method="post">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control" required="required" placeholder="Имя">
+                            <span asp-validation-for="Name" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" name="email" class="form-control" required="required" placeholder="Почта">
+                            <span asp-validation-for="Email" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Опишите проблему"></textarea>
+                            <span asp-validation-for="Message" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Отправить">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="contact-info">
+                    <h2 class="title text-center">Контактная информация</h2>
+                    <address>
+                        <p>Lime_Time | Inc</p>
+                        <p>Россия, Москва</p>
+                        <p>Контактный телефон: +8 (228)-322-10-30</p>
+                        <p>Почта: Isip_d.v.seryak@mpt.ru</p>
+                    </address>
+                    <div class="social-networks">
+                        <h2 class="title text-center">Ссылки на партнеров</h2>
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-vk"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!--/#contact-page-->
+
+
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Сервис</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="">Поддержка</a></li>
+                                <li><a href="">Контакты</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Товары</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer><!--/Footer-->
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/jquery.scrollUp.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/contact.js"></script>
+</body>
+</html>

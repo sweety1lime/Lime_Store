@@ -1,0 +1,333 @@
+@model IEnumerable<Lime_Store.Models.Product>
+@{
+    Layout = null;
+    Product product = Model.FirstOrDefault();
+
+    string availability = product.AvailabilityId == 1 ? "Нет в наличии" : "Есть в наличии";
+    string condition = product.ConditionId == 1 ? "Новое" :
+       product.ConditionId == 2 ? "Хорошее" :
+       product.ConditionId == 3 ? "Среднее" :
+       "Б\\У";
+}
+
+<!DOCTYPE html>
+<html lang="ru_RU">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товар | Lime_Time</title>
+    <link href="~/css/jquery.fancybox.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/mainNew.css" rel="stylesheet" />
+    <link href="~/css/responsive.css" rel="stylesheet" />
+</head><!--/head-->
+
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href=""><i class="fa fa-phone"></i> +7 (228)-322-10-30</a></li>
+                                <li><a href=""><i class="fa fa-envelope"></i> Isip_d.v.seryak@mpt.ru</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <div class="btn-group pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                    Россия
+                                    <span class="caret"></span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                    Валюта
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">Рубли</a></li>
+                                    <li><a href="">Доллары</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="@Url.Action("Cart")"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="@Url.Action("Index")">Домашняя страница</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="active">Магазин<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="@Url.Action("Shop")" class="active">Товары</a></li>
+                                        <li><a href="@Url.Action("Cart")"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="@Url.Action("ContactUs")">Поддержка</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            <input type="text" placeholder="Поиск" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2>Категории</h2>
+                        <div class="panel-group category-products" id="accordian">
+                            <!--category-productsr-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            Спортивная одежда
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="sportswear" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="">Nike </a></li>
+                                            <li><a href="">Under Armour </a></li>
+                                            <li><a href="">Adidas </a></li>
+                                            <li><a href="">Puma</a></li>
+                                            <li><a href="">ASICS </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#mens">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            Мужчинам
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="mens" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="">Fendi</a></li>
+                                            <li><a href="">Guess</a></li>
+                                            <li><a href="">Valentino</a></li>
+                                            <li><a href="">Dior</a></li>
+                                            <li><a href="">Versace</a></li>
+                                            <li><a href="">Armani</a></li>
+                                            <li><a href="">Prada</a></li>
+                                            <li><a href="">Dolce and Gabbana</a></li>
+                                            <li><a href="">Chanel</a></li>
+                                            <li><a href="">Gucci</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#womens">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            Женщинам
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="womens" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="">Fendi</a></li>
+                                            <li><a href="">Guess</a></li>
+                                            <li><a href="">Valentino</a></li>
+                                            <li><a href="">Dior</a></li>
+                                            <li><a href="">Versace</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">Детям</a></h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">Верхняя одежда</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">Сумки</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">Обувь</a></h4>
+                                </div>
+                            </div>
+                        </div><!--/category-productsr-->
+
+                        <div class="brands_products">
+                            <!--brands_products-->
+                            <h2>Бренды</h2>
+                            <div class="brands-name">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href=""> <span class="pull-right">(50)</span>NIKIFILINI</a></li>
+                                    <li><a href=""> <span class="pull-right">(56)</span>PZH WEAR</a></li>
+                                </ul>
+                            </div>
+                        </div><!--/brands_products-->
+
+                    </div>
+                </div>
+
+                <div class="col-sm-9 padding-right">
+                    <div class="product-details">
+                        <!--product-details-->
+                        <div class="col-sm-5">
+                            <div class="view-product">
+                                <img src="@product.PictureMain" alt="">
+
+                            </div>
+                            <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active ">
+                                        <a data-fancybox="images" href="@product.PictureMain"><img  src="@product.PictureMain" alt=""></a>
+                                        <a data-fancybox="images" href="@product.PictureAddOne"><img  src="@product.PictureAddOne" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="product-information">
+                                <!--/product-information-->
+
+                                <h2>@product.Name</h2>
+                                <span>
+                                    <span>@product.Price</span>
+                                    <a href="/Home/AddToCart?ID=@product.ProductId" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Добавить в карзину</a>
+                                </span>
+                                <p><b>Наличие:</b>@availability</p>
+                                <p><b>Артикул:</b>@condition</p>
+                                <p><b>Бренд:</b> @product.Brand</p>
+                            </div><!--/product-information-->
+                        </div>
+                    </div><!--/product-details-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <!--Footer-->
+
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Сервис</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="">Поддержка</a></li>
+                                <li><a href="">Контакты</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Товары</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer><!--/Footer-->
+
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/jquery.scrollUp.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/jquery.fancybox.min.js"></script>
+</body>
+</html>
